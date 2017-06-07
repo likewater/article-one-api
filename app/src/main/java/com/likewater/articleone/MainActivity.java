@@ -40,26 +40,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v){
         if(v == mFindRepsButton) {
             String location = mLocationEditText.getText().toString();
-            char[] userInputNumbers = location.toCharArray();
-            int stringLength = location.length();
-            if (stringLength == 5) {
-
-               for(int i = 0; i <= 4; i++){
-                   int counter = i;
-                   if (userInputNumbers[i] >= '0' && userInputNumbers[i] <= '9' ) {
-                        //if(Character.isDigit(userInputNumbers[i]) && counter == 4){
-                        Intent intent = new Intent(MainActivity.this, RepListActivity.class);
-                        intent.putExtra("location", location);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(MainActivity.this, "Please Enter Only Numbers", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-            } else {
-                Toast.makeText(MainActivity.this, "Please Enter A Five Digit Zip Code", Toast.LENGTH_LONG).show();
-            }
+            Intent intent = new Intent(MainActivity.this, RepListActivity.class);
+            intent.putExtra("location", location);
+            startActivity(intent);
         }
+
+
+//            String location = mLocationEditText.getText().toString();
+//            char[] userInputNumbers = location.toCharArray();
+//            int stringLength = location.length();
+//            if (stringLength == 5) {
+//
+//               for(int i = 0; i <= 4; i++){
+//                   int counter = i;
+//                   if (userInputNumbers[i] >= '0' && userInputNumbers[i] <= '9' ) {
+//                        //if(Character.isDigit(userInputNumbers[i]) && counter == 4){
+//                        Intent intent = new Intent(MainActivity.this, RepListActivity.class);
+//                        intent.putExtra("location", location);
+//                        startActivity(intent);
+//                    } else {
+//                        Toast.makeText(MainActivity.this, "Please Enter Only Numbers", Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//
+//            } else {
+//                Toast.makeText(MainActivity.this, "Please Enter A Five Digit Zip Code", Toast.LENGTH_LONG).show();
+//            }
+//        }
 
         if(v == mFindAboutPageButton){
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
