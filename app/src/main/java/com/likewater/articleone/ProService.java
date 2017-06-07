@@ -1,5 +1,17 @@
 package com.likewater.articleone;
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.likewater.articleone.Constants;
+import com.likewater.articleone.Rep;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -25,8 +37,40 @@ public class ProService {
                 .url(url)
                 .header(Constants.HEADER, Constants.PRO_PUBLICA_KEY)
                 .build();
+        Log.d(url, url);
+        Log.d(Constants.HEADER, Constants.HEADER );
 
         Call call = client.newCall(request);
         call.enqueue(callback);
+    }
+
+    public ArrayList<Rep> processResults(Response response) {
+        ArrayList<Rep> reps = new ArrayList<>();
+
+        try{
+            String jsonData = response.body().string();
+            if(response.isSuccessful()) {
+                JSONObject responseJSON = new JSONObject(jsonData);
+                JSONArray repListJSON = responseJSON.getJSONArray("results");
+
+                for(int i = 0; i < repListJSON.length(); i++){
+                   JSONObject repJSON = repListJSON.getJSONObject(i);
+                    String lastName = repJSON.getString("last_name");
+                    String firstName = repJSON.getString("first_name");
+                    String state = repJSON.getString("state");
+                    String party = repJSON.getString("party");
+
+                    Rep rep = new Rep(firstName, lastName, state, party);
+                    reps.add(rep);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return reps;
+
     }
 }
