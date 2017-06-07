@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/ArticleOne.iml" filepath="$PROJECT_DIR$/ArticleOne.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/article-one-api.iml" filepath="$PROJECT_DIR$/article-one-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/article-one-api.iml" filepath="$PROJECT_DIR$/article-one-api.iml" />
     </modules>
   </component>

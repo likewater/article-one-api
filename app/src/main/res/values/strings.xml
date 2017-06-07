@@ -1,3 +1,61 @@
 <resources>
     <string name="app_name">Article One</string>
+
+    <string-array name="states_array">
+        <item>al</item>
+        <item>ak</item>
+        <item>ar</item>
+        <item>az</item>
+        <item>ca</item>
+        <item>co</item>
+        <item>ct</item>
+        <item>de</item>
+        <item>fl</item>
+        <item>ga</item>
+        <item>hi</item>
+        <item>ia</item>
+        <item>id</item>
+        <item>il</item>
+        <item>in</item>
+        <item>ks</item>
+        <item>ky</item>
+        <item>la</item>
+        <item>ma</item>
+        <item>md</item>
+        <item>me</item>
+        <item>mi</item>
+        <item>mn</item>
+        <item>mo</item>
+        <item>ms</item>
+        <item>mt</item>
+        <item>nc</item>
+        <item>nd</item>
+        <item>ne</item>
+        <item>nh</item>
+        <item>nj</item>
+        <item>nm</item>
+        <item>nv</item>
+        <item>ny</item>
+        <item>oh</item>
+        <item>ok</item>
+        <item>or</item>
+        <item>pa</item>
+        <item>ri</item>
+        <item>sc</item>
+        <item>sd</item>
+        <item>tn</item>
+        <item>tx</item>
+        <item>ut</item>
+        <item>va</item>
+        <item>vt</item>
+        <item>wa</item>
+        <item>wi</item>
+        <item>wv</item>
+        <item>wy</item>
+    </string-array>
+
+    <string-array name="congress_array">
+        <item>house</item>
+        <item>senate</item>
+    </string-array>
 </resources>

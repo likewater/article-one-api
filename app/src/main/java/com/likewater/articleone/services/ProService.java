@@ -1,4 +1,4 @@
-package com.likewater.articleone;
+package com.likewater.articleone.services;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.likewater.articleone.Constants;
-import com.likewater.articleone.Rep;
+import com.likewater.articleone.models.Rep;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,16 +20,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ProService {
-    public static void findReps(String location, Callback callback){
-
-        //https://api.propublica.org/congress/v1/115/senate/members.json
-        //endpoint example
+    public static void findReps(String congress, String state, Callback callback){
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.ENDPOINT).newBuilder();
-        urlBuilder.addPathSegment(location);
+        urlBuilder.addPathSegment(congress);
+        urlBuilder.addPathSegment(state);
         urlBuilder.addPathSegment(Constants.URL_END);
         String url = urlBuilder.build().toString();
 
@@ -55,12 +53,12 @@ public class ProService {
 
                 for(int i = 0; i < repListJSON.length(); i++){
                    JSONObject repJSON = repListJSON.getJSONObject(i);
-                    String lastName = repJSON.getString("last_name");
-                    String firstName = repJSON.getString("first_name");
-                    String state = repJSON.getString("state");
+                    String name = repJSON.getString("name");
+                    String role = repJSON.getString("role");
                     String party = repJSON.getString("party");
+                    String apiUri = repJSON.getString("api_uri");
 
-                    Rep rep = new Rep(firstName, lastName, state, party);
+                    Rep rep = new Rep(name, role, party, apiUri);
                     reps.add(rep);
                 }
             }
@@ -71,6 +69,5 @@ public class ProService {
             e.printStackTrace();
         }
         return reps;
-
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.likewater.articleone.AboutActivity">
+    tools:context="com.likewater.articleone.ui.AboutActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -27,7 +27,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
-        android:text="Article One uses the Sunlight Congress API. We urge you to participate in your democracy. Your congressional representatives work for you. "
+        android:text="Article One uses the ProPublica Congress API. We urge you to participate in your democracy. Your congressional representatives work for you. "
         android:textAlignment="center"
         android:textColor="@color/colorTextIcons"
         android:textSize="18sp"
