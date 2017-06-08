@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,11 +43,6 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
         return mReps.size();
     }
 
-
-
-
-
-
     public class RepViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
         @Bind(R.id.legislatorNameTextView) TextView mLegislatorNameTextView;
@@ -57,11 +53,16 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
 
         public RepViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            try {
+                ButterKnife.bind(this, itemView);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             mContext = itemView.getContext();
         }
 
         public void bindRep(Rep rep) {
+            //Picasso.with(mContext).load(rep.getImageUrl()).into(mLegislatorImageView);
             mLegislatorNameTextView.setText(rep.getName());
             mRoleNameTextView.setText(rep.getRole());
             mPartyTextView.setText(rep.getParty());
