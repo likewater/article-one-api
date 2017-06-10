@@ -1,5 +1,7 @@
 package com.likewater.articleone.ui;
 
+/* RepListActivity creates an arraylist of reps and feeds Recycler view */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

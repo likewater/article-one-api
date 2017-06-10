@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-       if(v == mFindAboutPageButton){
+        if(v == mFindAboutPageButton){
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         }

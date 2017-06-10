@@ -1,5 +1,7 @@
 package com.likewater.articleone.models;
 
+/* Model for a Rep object */
+
 public class Rep {
 
     private String mName;
