@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@color/colorPrimaryLight"
     tools:context="com.likewater.articleone.ui.MainActivity">
+
+<android.support.constraint.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/colorPrimaryLight"-->
+    <!--tools:context="com.likewater.articleone.ui.MainActivity">-->
 
     <Button
         android:id="@+id/findRepsButton"
@@ -16,23 +30,26 @@
         android:textColor="@color/colorTextIcons"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/findAboutPageButton"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="274dp"
+        android:layout_marginStart="22dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="382dp"
+        android:layout_height="104dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/articleonelogothreee"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="0dp" />
 
     <TextView
         android:id="@+id/articleOneTextView"
-        android:layout_width="347dp"
+        android:layout_width="0dp"
         android:layout_height="86dp"
         android:text='"All legislative Powers herein granted shall be vested in a Congress of the United States, which shall consist of a Senate and House of Representatives."'
         android:textAlignment="textStart"
@@ -42,11 +59,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp" />
 
     <TextView
         android:id="@+id/articleOneTextView2"
-        android:layout_width="348dp"
+        android:layout_width="0dp"
         android:layout_height="182dp"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
@@ -54,10 +75,14 @@
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimaryText"
         android:textSize="15sp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/articleOneTextView"
-        app:layout_constraintHorizontal_bias="0.555" />
+        app:layout_constraintHorizontal_bias="0.555"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp" />
 
     <Button
         android:id="@+id/findAboutPageButton"
@@ -67,34 +92,43 @@
         android:text="About"
         android:textColor="@color/colorTextIcons"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerState"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.951" />
 
     <Spinner
         android:id="@+id/spinnerHouse"
-        android:layout_width="348dp"
+        android:layout_width="0dp"
         android:layout_height="26dp"
         android:layout_marginBottom="48dp"
         android:layout_marginTop="8dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
         android:background="@color/colorPrimary"
         android:dropDownWidth="match_parent"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/articleOneTextView2"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.121"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="24dp" />
 
     <Spinner
         android:id="@+id/spinnerState"
-        android:layout_width="348dp"
+        android:layout_width="0dp"
         android:layout_height="26dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="24dp"
         android:background="@color/colorPrimary"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,12 +136,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerHouse"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintHorizontal_bias="0.555" />
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="24dp" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
         app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="25dp"
+        tools:layout_editor_absoluteX="20dp" />
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
