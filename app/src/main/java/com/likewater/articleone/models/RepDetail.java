@@ -1,5 +1,8 @@
 package com.likewater.articleone.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class RepDetail {
     private String mCongress;
     private String mLastName;
@@ -13,6 +16,8 @@ public class RepDetail {
     private String mFacebookAccount;
     private String mYoutubeAccount;
     private String mPhone;
+
+    public RepDetail(){}
 
     public RepDetail(String congress, String lastName, String firstName, String title,
                      String state, String district, String currentParty, String url,
