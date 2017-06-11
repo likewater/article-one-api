@@ -1,13 +1,19 @@
 package com.likewater.articleone.models;
 
 /* Model for a Rep object */
+import org.parceler.Parcel;
 
+import java.util.ArrayList;
+
+@Parcel
 public class Rep {
 
     private String mName;
     private String mRole;
     private String mParty;
     private String mApiUri;
+
+    public Rep() {}
 
     public Rep(String name, String role, String party, String apiUri){
         this.mName = name;

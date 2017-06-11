@@ -20,7 +20,7 @@
             android:paddingTop="20dp">
 
             <TextView
-                android:id="@+id/repFirstNameTextView"
+                android:id="@+id/repNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -31,10 +31,10 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/repRoleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/repFirstNameTextView"
+                android:layout_alignTop="@+id/repNameTextView"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
@@ -43,134 +43,169 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/repLastNameTextView"
+                android:id="@+id/repPartyTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/repFirstNameTextView"
-                android:text="Rep First and Last Name"
+                android:layout_below="@+id/repNameTextView"
+                android:text="Senator"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/stateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/repLastNameTextView"
-                android:text="MO"
-                android:textColor="@color/colorSecondaryText"
-                android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/districtTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/stateTextView"
-                android:text="1"
-                android:textColor="@color/colorSecondaryText"
-                android:textStyle="italic"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+            <!--<TextView-->
+                <!--android:id="@+id/repFirstNameTextView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:text="Rep First and Last Name"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/partyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Republican"
-                android:layout_below="@+id/districtTextView"
-                android:textColor="@color/colorSecondaryText"
-                android:textStyle="italic"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-        </RelativeLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/titleTextView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignTop="@+id/repFirstNameTextView"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:text="Senator"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--android:textStyle="bold" />-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <!--<TextView-->
+                <!--android:id="@+id/repLastNameTextView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_below="@+id/repFirstNameTextView"-->
+                <!--android:text="Rep First and Last Name"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/saveRepButton"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:orientation="vertical"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:paddingTop="20dp">
+            <!--<TextView-->
+                <!--android:id="@+id/stateTextView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_below="@+id/repLastNameTextView"-->
+                <!--android:text="MO"-->
+                <!--android:textColor="@color/colorSecondaryText"-->
+                <!--android:textStyle="italic" />-->
 
-                <TextView
-                    android:id="@+id/websiteTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center"
-                    android:text="View Online"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/districtTextView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/stateTextView"-->
+                <!--android:text="1"-->
+                <!--android:textColor="@color/colorSecondaryText"-->
+                <!--android:textStyle="italic"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true" />-->
 
-                <TextView
-                    android:id="@+id/phoneTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/ic_local_phone_white_24dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center"
-                    android:text="(503) 223-1282"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:id="@+id/partyTextView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Republican"-->
+                <!--android:layout_below="@+id/districtTextView"-->
+                <!--android:textColor="@color/colorSecondaryText"-->
+                <!--android:textStyle="italic"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true" />-->
+        <!--</RelativeLayout>-->
 
-                <TextView
-                    android:id="@+id/twitterTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
-                    android:text="Twitter"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-                <TextView
-                    android:id="@+id/facebookTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
-                    android:text="Facebook"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_above="@+id/saveRepButton"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="30dp"-->
+                <!--android:paddingRight="30dp"-->
+                <!--android:paddingTop="20dp">-->
 
-                <TextView
-                    android:id="@+id/youtubeTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
-                    android:text="Youtube"
-                    android:textColor="@color/colorTextIcons"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                <!--<TextView-->
+                    <!--android:id="@+id/websiteTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_account_balance_white_24dp"-->
+                    <!--android:drawablePadding="4dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="View Online"-->
+                    <!--android:textColor="@color/colorTextIcons"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold" />-->
 
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/phoneTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_local_phone_white_24dp"-->
+                    <!--android:drawablePadding="4dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="(503) 223-1282"-->
+                    <!--android:textColor="@color/colorTextIcons"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/twitterTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"-->
+                    <!--android:drawablePadding="4dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:text="Twitter"-->
+                    <!--android:textColor="@color/colorTextIcons"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/facebookTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"-->
+                    <!--android:drawablePadding="4dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:text="Facebook"-->
+                    <!--android:textColor="@color/colorTextIcons"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/youtubeTextView"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"-->
+                    <!--android:drawablePadding="4dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:text="Youtube"-->
+                    <!--android:textColor="@color/colorTextIcons"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold" />-->
+
+            <!--</LinearLayout>-->
 
             <Button
                 android:id="@+id/saveRepButton"

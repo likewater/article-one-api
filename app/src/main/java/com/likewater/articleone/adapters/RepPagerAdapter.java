@@ -4,32 +4,32 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.likewater.articleone.models.RepDetail;
+import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.ui.RepDetailFragment;
 
 import java.util.ArrayList;
 
 public class RepPagerAdapter extends FragmentPagerAdapter{
-    private ArrayList<RepDetail> mRepDetail;
+    private ArrayList<Rep> mRep;
 
-    public RepPagerAdapter(FragmentManager fm, ArrayList<RepDetail> reps){
+    public RepPagerAdapter(FragmentManager fm, ArrayList<Rep> reps){
         super(fm);
-        mRepDetail = reps;
+        mRep = reps;
     }
 
     @Override
     public Fragment getItem(int position){
-        return RepDetailFragment.newInstance(mRepDetail.get(position));
+        return RepDetailFragment.newInstance(mRep.get(position));
     }
 
     @Override
     public int getCount(){
-        return mRepDetail.size();
+        return mRep.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position){
-        return mRepDetail.get(position).getLastName();
+        return mRep.get(position).getName();
     }
 
 
