@@ -1,6 +1,7 @@
 package com.likewater.articleone.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
+import com.likewater.articleone.ui.RepDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -43,7 +47,7 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
         return mReps.size();
     }
 
-    public class RepViewHolder extends RecyclerView.ViewHolder {
+    public class RepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
         @Bind(R.id.legislatorNameTextView) TextView mLegislatorNameTextView;
         @Bind(R.id.roleNameTextView) TextView mRoleNameTextView;
@@ -53,13 +57,32 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
 
         public RepViewHolder(View itemView) {
             super(itemView);
-            try {
-                ButterKnife.bind(this, itemView);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
+
+//we need to create a new model on click and send the results to the fragment
+
+            @Override
+            public void onClick(View v) {
+                int itemPosition = getLayoutPosition();
+                Intent intent = new Intent(mContext, RepDetailActivity.class);
+                intent.putExtra("position", itemPosition);
+                intent.putExtra("reps", Parcels.wrap(mReps));
+                mContext.startActivity(intent);
+            }
+
+
+//end on click method
+
+//            try {
+//                ButterKnife.bind(this, itemView);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            mContext = itemView.getContext();
+
 
         public void bindRep(Rep rep) {
             //Picasso.with(mContext).load(rep.getImageUrl()).into(mLegislatorImageView);
