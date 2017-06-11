@@ -7,4 +7,6 @@ public class Constants {
     public static final String HEADER = "X-API-Key";
     public static final String ENDPOINT = "https://api.propublica.org/congress/v1/members";
     public static final String URL_END = "current.json";
+    public final static String PREFERENCES_CONGRESS_KEY = "congress";
+    public static final String PREFERENCES_STATE_KEY = "state";
 }

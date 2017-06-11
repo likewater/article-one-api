@@ -1,6 +1,8 @@
 package com.likewater.articleone.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +12,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.graphics.Typeface;
 
+import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @Bind(R.id.findRepsButton) Button mFindRepsButton;
     //@Bind(R.id.locationEditText) EditText mLocationEditText;
     @Bind(R.id.articleOneTextView) TextView mArticleOneTextView;
@@ -29,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
         Typeface openSans = Typeface.createFromAsset(getAssets(),
                 "fonts/opensans-regular.ttf");
         mArticleOneTextView.setTypeface(openSans);
@@ -55,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == mFindRepsButton) {
             String congress = mSpinnerHouse.getSelectedItem().toString();
             String state = mSpinnerState.getSelectedItem().toString();
+            addToSharedPreferences(congress, state);
             Intent intent = new Intent(MainActivity.this, RepListActivity.class);
             intent.putExtra("congress", congress);
             intent.putExtra("state", state);
@@ -66,5 +78,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         }
+
+
+    }
+    private void addToSharedPreferences(String congress, String state) {
+        mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();
+        mEditor.putString(Constants.PREFERENCES_STATE_KEY, state).apply();
     }
 }

@@ -3,6 +3,8 @@ package com.likewater.articleone.ui;
 /* RepListActivity creates an arraylist of reps and feeds Recycler view */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +23,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Response;
 
+import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.likewater.articleone.adapters.RepListAdapter;
 import com.likewater.articleone.models.Rep;
@@ -29,6 +32,10 @@ import com.likewater.articleone.services.ProService;
 import static com.likewater.articleone.services.ProService.findReps;
 
 public class RepListActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentCongress;
+    private String mRecentState;
+
     public static final String TAG = RepListActivity.class.getSimpleName();
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -50,6 +57,14 @@ public class RepListActivity extends AppCompatActivity {
         String state = intent.getStringExtra("state");
 //        mLocationTextView.setText("Here Are Your " + state + " Reps");
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentCongress = mSharedPreferences.getString(Constants.PREFERENCES_CONGRESS_KEY, null);
+        mRecentState = mSharedPreferences.getString(Constants.PREFERENCES_STATE_KEY, null);
+        if (mRecentCongress != null && mRecentState != null) {
+            getReps(mRecentCongress, mRecentState);
+        }
+        Log.d("congress", mRecentCongress);
+        Log.d("state", mRecentState);
         getReps(congress, state);
     }
 
