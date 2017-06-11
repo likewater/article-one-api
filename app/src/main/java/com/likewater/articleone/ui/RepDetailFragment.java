@@ -54,6 +54,8 @@ public class RepDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // I need to get this variable - mRep.getApiUri(){}
+        //I need to pass it to: findRepDetail
 
         View view = inflater.inflate(R.layout.fragment_rep_detail, container, false);
         ButterKnife.bind(this, view);
