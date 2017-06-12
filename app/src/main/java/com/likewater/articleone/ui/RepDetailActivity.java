@@ -11,7 +11,6 @@ import butterknife.ButterKnife;
 
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
-import com.likewater.articleone.models.RepDetail;
 import com.likewater.articleone.adapters.RepPagerAdapter;
 
 public class RepDetailActivity extends AppCompatActivity {

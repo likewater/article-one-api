@@ -1,6 +1,5 @@
 package com.likewater.articleone.models;
 
-/* Model for a Rep object */
 import org.parceler.Parcel;
 
 import java.util.ArrayList;

@@ -11,13 +11,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -46,8 +42,6 @@ public class RepListActivity extends AppCompatActivity {
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RepListAdapter mAdapter;
-//    @Bind(R.id.locationTextView) TextView mLocationTextView;
-    //@Bind(R.id.repListView) ListView mListView;
 
     public ArrayList<Rep> mReps = new ArrayList<>();
 
@@ -61,7 +55,7 @@ public class RepListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String congress = intent.getStringExtra("congress");
         String state = intent.getStringExtra("state");
-//        mLocationTextView.setText("Here Are Your " + state + " Reps");
+//      mLocationTextView.setText("Here Are Your " + state + " Reps");
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentCongress = mSharedPreferences.getString(Constants.PREFERENCES_CONGRESS_KEY, null);
@@ -69,8 +63,6 @@ public class RepListActivity extends AppCompatActivity {
         if (mRecentCongress != null && mRecentState != null) {
             getReps(mRecentCongress, mRecentState);
         }
-//        Log.d("congress", mRecentCongress);
-//        Log.d("state", mRecentState);
         getReps(congress, state);
     }
 
@@ -90,8 +82,7 @@ public class RepListActivity extends AppCompatActivity {
 
            @Override
             public boolean onQueryTextSubmit(String query) {
-                //addToSharedPreferences(queryOne);
-               if(query == mRecentCongress) {
+                   if(query == mRecentCongress) {
                    getReps(query, mRecentState);
                    addToSharedPreferences(query, mRecentState);
                }
@@ -106,9 +97,7 @@ public class RepListActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
-
         });
-
         return true;
     }
 
@@ -141,13 +130,7 @@ public class RepListActivity extends AppCompatActivity {
                                 new LinearLayoutManager(RepListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
-
-
-//                        String[] repNames = new String[mReps.size()];
-//                        for (int i = 0; i < repNames.length; i++) {
-//                            repNames[i] = mReps.get(i).getName() + ", " + mReps.get(i).getRole();
-
-                        }
+                      }
 
                         //ArrayAdapter adapter = new ArrayAdapter(RepListActivity.this, android.R.layout.simple_list_item_1, repNames);
                         //mListView.setAdapter(adapter);

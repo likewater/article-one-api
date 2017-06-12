@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,7 +15,6 @@ import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.ui.RepDetailActivity;
-import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -40,12 +38,6 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
         TextView nameTextView = (TextView) mView.findViewById(R.id.legislatorNameTextView);
         TextView roleTextView = (TextView) mView.findViewById(R.id.roleNameTextView);
         TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
-
-//        Picasso.with(mContext)
-//                .load(restaurant.getImageUrl())
-//                .resize(MAX_WIDTH, MAX_HEIGHT)
-//                .centerCrop()
-//                .into(restaurantImageView);
 
         nameTextView.setText(rep.getName());
         roleTextView.setText(rep.getRole());
@@ -78,7 +70,5 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
             }
         });
     }
-
-
 
 }

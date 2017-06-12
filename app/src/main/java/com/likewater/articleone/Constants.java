@@ -9,6 +9,7 @@ public class Constants {
     public static final String URL_END = "current.json";
     public final static String PREFERENCES_CONGRESS_KEY = "congress";
     public static final String PREFERENCES_STATE_KEY = "state";
+    public static final String PREFERENCES_EMAIL_KEY = "emailEditText";
     public static final String FIREBASE_CHILD_SEARCHED_CONGRESS = "searchedCongress";
     public static final String FIREBASE_CHILD_SEARCHED_STATE = "searchedState";
     public static final String FIREBASE_CHILD_REPS = "reps";

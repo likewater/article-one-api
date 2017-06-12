@@ -2,7 +2,6 @@ package com.likewater.articleone.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +80,7 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // I need to get this variable - mRep.getApiUri(){}
+        //I need to get this variable - mRep.getApiUri(){}
         //I need to pass it to: findRepDetail
 
         View view = inflater.inflate(R.layout.fragment_rep_detail, container, false);

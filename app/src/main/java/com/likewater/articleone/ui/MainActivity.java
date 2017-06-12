@@ -30,13 +30,13 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
+//  private SharedPreferences mSharedPreferences;
+//  private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedStateReference;
     private ValueEventListener mSearchedStateReferenceListener;
 
     @Bind(R.id.findRepsButton) Button mFindRepsButton;
-    //@Bind(R.id.locationEditText) EditText mLocationEditText;
+//  @Bind(R.id.locationEditText) EditText mLocationEditText;
     @Bind(R.id.articleOneTextView) TextView mArticleOneTextView;
     @Bind(R.id.articleOneTextView2) TextView mArticleOneTextView2;
     @Bind(R.id.findAboutPageButton) Button mFindAboutPageButton;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchedStateReferenceListener = mSearchedStateReference.addValueEventListener(new ValueEventListener() { //attach listener
 
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
                     String state = locationSnapshot.getValue().toString();
                     Log.d("States updated", "state: " + state); //log
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
+//      mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//      mEditor = mSharedPreferences.edit();
 
         Typeface openSans = Typeface.createFromAsset(getAssets(),
                 "fonts/opensans-regular.ttf");
@@ -160,8 +160,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        super.onDestroy();
 //        mSearchedStateReference.removeEventListener(mSearchedStateReferenceListener);
 //    }
-
-
 
 //    private void addToSharedPreferences(String congress, String state) {
 //        mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();

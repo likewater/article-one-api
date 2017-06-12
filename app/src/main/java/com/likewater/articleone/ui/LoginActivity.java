@@ -1,47 +1,5 @@
 package com.likewater.articleone.ui;
 
-//import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.TextView;
-//
-//import com.likewater.articleone.R;
-//
-//import butterknife.Bind;
-//import butterknife.ButterKnife;
-//
-//public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-//    @Bind(R.id.registerTextView) TextView mRegisterTextView;
-//    @Bind(R.id.passwordLoginButton) TextView mPasswordLoginButton;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-//        ButterKnife.bind(this);
-//        mPasswordLoginButton.setOnClickListener(this);
-//        mRegisterTextView.setOnClickListener(this);
-//    }
-
-    //@Override
-//    public void onClickOne(View view) {
-//        if (view == mPasswordLoginButton) {
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
-
-//    @Override
-//    public void onClick(View view) {
-//        if (view == mRegisterTextView) {
-//            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
-//}
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;

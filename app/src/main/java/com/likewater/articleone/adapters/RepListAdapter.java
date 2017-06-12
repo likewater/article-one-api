@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.ui.RepDetailActivity;
-import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -62,8 +61,6 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
             itemView.setOnClickListener(this);
         }
 
-//we need to create a new model on click and send the results to the fragment
-
             @Override
             public void onClick(View v) {
                 int itemPosition = getLayoutPosition();
@@ -75,18 +72,7 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
             }
 
 
-//end on click method
-
-//            try {
-//                ButterKnife.bind(this, itemView);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            mContext = itemView.getContext();
-
-
         public void bindRep(Rep rep) {
-            //Picasso.with(mContext).load(rep.getImageUrl()).into(mLegislatorImageView);
             mLegislatorNameTextView.setText(rep.getName());
             mRoleNameTextView.setText(rep.getRole());
             mPartyTextView.setText(rep.getParty());
