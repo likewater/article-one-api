@@ -32,9 +32,9 @@ import com.likewater.articleone.services.ProService;
 import static com.likewater.articleone.services.ProService.findReps;
 
 public class RepListActivity extends AppCompatActivity {
-    private SharedPreferences mSharedPreferences;
-    private String mRecentCongress;
-    private String mRecentState;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentCongress;
+//    private String mRecentState;
 
     public static final String TAG = RepListActivity.class.getSimpleName();
 
@@ -57,14 +57,14 @@ public class RepListActivity extends AppCompatActivity {
         String state = intent.getStringExtra("state");
 //        mLocationTextView.setText("Here Are Your " + state + " Reps");
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentCongress = mSharedPreferences.getString(Constants.PREFERENCES_CONGRESS_KEY, null);
-        mRecentState = mSharedPreferences.getString(Constants.PREFERENCES_STATE_KEY, null);
-        if (mRecentCongress != null && mRecentState != null) {
-            getReps(mRecentCongress, mRecentState);
-        }
-        Log.d("congress", mRecentCongress);
-        Log.d("state", mRecentState);
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentCongress = mSharedPreferences.getString(Constants.PREFERENCES_CONGRESS_KEY, null);
+//        mRecentState = mSharedPreferences.getString(Constants.PREFERENCES_STATE_KEY, null);
+//        if (mRecentCongress != null && mRecentState != null) {
+//            getReps(mRecentCongress, mRecentState);
+//        }
+//        Log.d("congress", mRecentCongress);
+//        Log.d("state", mRecentState);
         getReps(congress, state);
     }
 

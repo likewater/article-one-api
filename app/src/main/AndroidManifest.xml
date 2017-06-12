@@ -24,14 +24,15 @@
         <activity android:name=".ui.AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.likewater.articleone.ui.MainActivity"></meta-data>
+                android:value="com.likewater.articleone.ui.MainActivity" />
         </activity>
         <activity android:name=".ui.RepListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.likewater.articleone.ui.MainActivity"></meta-data>
+                android:value="com.likewater.articleone.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.RepDetailActivity"></activity>
+        <activity android:name=".ui.RepDetailActivity" />
+        <activity android:name=".ui.SavedRepListActivity"></activity>
     </application>
 
 </manifest>

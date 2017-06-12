@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1003770225668",
+    "firebase_url": "https://myreps-263a1.firebaseio.com",
+    "project_id": "myreps-263a1",
+    "storage_bucket": "myreps-263a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003770225668:android:8129fcc10e53ef0a",
+        "android_client_info": {
+          "package_name": "com.likewater.articleone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003770225668-67sp67ue942bd1p3codes1p9oa1nbe7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.likewater.articleone",
+            "certificate_hash": "6fca5dafeb10d73d6b07dbfa8b51e2607b0b0e97"
+          }
+        },
+        {
+          "client_id": "1003770225668-g6cbbp0ftrg7a3hsaccc4nik4n39433a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApA8zUifAmpR7FEKSYxiO5uSWvJ9JAU4w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003770225668-g6cbbp0ftrg7a3hsaccc4nik4n39433a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

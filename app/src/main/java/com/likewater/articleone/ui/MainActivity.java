@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,6 +13,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.graphics.Typeface;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 
@@ -20,8 +26,10 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+    private DatabaseReference mSearchedStateReference;
+    private ValueEventListener mSearchedStateReferenceListener;
 
     @Bind(R.id.findRepsButton) Button mFindRepsButton;
     //@Bind(R.id.locationEditText) EditText mLocationEditText;
@@ -30,15 +38,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.findAboutPageButton) Button mFindAboutPageButton;
     @Bind(R.id.spinnerHouse) Spinner mSpinnerHouse;
     @Bind(R.id.spinnerState) Spinner mSpinnerState;
+    @Bind(R.id.savedRepsButton) Button mSavedRepsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedStateReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_STATE);
+
+        mSearchedStateReferenceListener = mSearchedStateReference.addValueEventListener(new ValueEventListener() { //attach listener
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
+                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
+                    String state = locationSnapshot.getValue().toString();
+                    Log.d("States updated", "state: " + state); //log
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
+
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
         Typeface openSans = Typeface.createFromAsset(getAssets(),
                 "fonts/opensans-regular.ttf");
@@ -46,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mArticleOneTextView2.setTypeface(openSans);
         mFindRepsButton.setOnClickListener(this);
         mFindAboutPageButton.setOnClickListener(this);
+        mSavedRepsButton.setOnClickListener(this);
 
         Spinner spinnerHouse = (Spinner) findViewById(R.id.spinnerHouse);
         ArrayAdapter<CharSequence> adapterOne = ArrayAdapter.createFromResource(this,
@@ -66,10 +98,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == mFindRepsButton) {
             String congress = mSpinnerHouse.getSelectedItem().toString();
             String state = mSpinnerState.getSelectedItem().toString();
-            addToSharedPreferences(congress, state);
+            //addToSharedPreferences(congress, state);
+
+            saveLocationToFirebase(state);
+
             Intent intent = new Intent(MainActivity.this, RepListActivity.class);
             intent.putExtra("congress", congress);
             intent.putExtra("state", state);
+            startActivity(intent);
+        }
+
+        if (v == mSavedRepsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedRepListActivity.class);
             startActivity(intent);
         }
 
@@ -81,8 +121,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-    private void addToSharedPreferences(String congress, String state) {
-        mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();
-        mEditor.putString(Constants.PREFERENCES_STATE_KEY, state).apply();
+
+    public void saveLocationToFirebase(String state) {
+        mSearchedStateReference.push().setValue(state);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedStateReference.removeEventListener(mSearchedStateReferenceListener);
+    }
+
+
+
+//    private void addToSharedPreferences(String congress, String state) {
+//        mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();
+//        mEditor.putString(Constants.PREFERENCES_STATE_KEY, state).apply();
+//    }
 }

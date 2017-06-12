@@ -7,7 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.services.ProService;
@@ -22,7 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import okhttp3.Response;
 
-public class RepDetailFragment extends Fragment {
+public class RepDetailFragment extends Fragment implements View.OnClickListener{
     @Bind(R.id.repNameTextView) TextView mName;
     @Bind(R.id.repRoleTextView) TextView mRole;
     @Bind(R.id.repPartyTextView) TextView mParty;
@@ -38,7 +42,7 @@ public class RepDetailFragment extends Fragment {
 //    @Bind(R.id.facebookTextView) TextView mFacebookAccount;
 //    @Bind(R.id.youtubeTextView) TextView mYoutubeAccount;
 //    @Bind(R.id.phoneTextView) TextView mPhone;
-//    @Bind(R.id.saveRepButton) TextView mSaveRepButton;
+    @Bind(R.id.saveRepButton) TextView mSaveRepButton;
 
     private Rep mRep;
 
@@ -87,6 +91,7 @@ public class RepDetailFragment extends Fragment {
         mRole.setText(mRep.getRole());
         mParty.setText(mRep.getParty());
         //mApiUri.setText(mRep.getApiUri());
+        mSaveRepButton.setOnClickListener(this);
 
 //        mFirstName.setText(mRepDetail.getFirstName());
 //        mLastName.setText(mRepDetail.getLastName());
@@ -101,6 +106,18 @@ public class RepDetailFragment extends Fragment {
 //        mPhone.setText(mRepDetail.getPhone());
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v == mSaveRepButton) {
+            DatabaseReference restaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_REPS);
+            restaurantRef.push().setValue(mRep);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
