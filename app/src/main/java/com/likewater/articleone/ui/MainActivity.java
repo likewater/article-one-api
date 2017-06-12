@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String state = mSpinnerState.getSelectedItem().toString();
             //addToSharedPreferences(congress, state);
 
-            saveLocationToFirebase(state);
+            //saveLocationToFirebase(state);
 
             Intent intent = new Intent(MainActivity.this, RepListActivity.class);
             intent.putExtra("congress", congress);
@@ -122,15 +122,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void saveLocationToFirebase(String state) {
-        mSearchedStateReference.push().setValue(state);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearchedStateReference.removeEventListener(mSearchedStateReferenceListener);
-    }
+//    public void saveLocationToFirebase(String state) {
+//        mSearchedStateReference.push().setValue(state);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mSearchedStateReference.removeEventListener(mSearchedStateReferenceListener);
+//    }
 
 
 
