@@ -14,8 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/NoActionBarTheme">
-        </activity>
+            android:theme="@style/NoActionBarTheme"></activity>
         <activity android:name=".ui.AboutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -29,8 +28,12 @@
         <activity android:name=".ui.RepDetailActivity" />
         <activity android:name=".ui.SavedRepListActivity" />
         <activity android:name=".ui.CreateAccountActivity">
+
+        </activity>
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
