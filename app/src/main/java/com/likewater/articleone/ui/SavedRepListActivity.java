@@ -39,8 +39,7 @@ public class SavedRepListActivity extends AppCompatActivity {
                 (Rep.class, R.layout.rep_list_item, FirebaseRepViewHolder.class, mRepReference) {
 
             @Override
-            protected void populateViewHolder(FirebaseRepViewHolder viewHolder,
-                                              Rep model, int position) {
+            protected void populateViewHolder(FirebaseRepViewHolder viewHolder, Rep model, int position) {
                 viewHolder.bindRep(model);
             }
         };

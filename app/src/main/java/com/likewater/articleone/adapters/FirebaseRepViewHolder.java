@@ -37,9 +37,9 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
     }
 
     public void bindRep(Rep rep) {
-        TextView nameTextView = (TextView) mView.findViewById(R.id.repNameTextView);
-        TextView roleTextView = (TextView) mView.findViewById(R.id.repRoleTextView);
-        TextView partyTextView = (TextView) mView.findViewById(R.id.repPartyTextView);
+        TextView nameTextView = (TextView) mView.findViewById(R.id.legislatorNameTextView);
+        TextView roleTextView = (TextView) mView.findViewById(R.id.roleNameTextView);
+        TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
 
 //        Picasso.with(mContext)
 //                .load(restaurant.getImageUrl())
