@@ -13,4 +13,5 @@ public class Constants {
     public static final String FIREBASE_CHILD_SEARCHED_CONGRESS = "searchedCongress";
     public static final String FIREBASE_CHILD_SEARCHED_STATE = "searchedState";
     public static final String FIREBASE_CHILD_REPS = "reps";
+    public static final String LOGIN_EMAIL = "EMAIL";
 }

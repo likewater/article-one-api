@@ -82,7 +82,7 @@ public class RepListActivity extends AppCompatActivity {
 
            @Override
             public boolean onQueryTextSubmit(String query) {
-                   if(query == mRecentCongress) {
+               if(query == mRecentCongress) {
                    getReps(query, mRecentState);
                    addToSharedPreferences(query, mRecentState);
                }

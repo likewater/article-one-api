@@ -2,6 +2,8 @@ package com.likewater.articleone.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,12 +14,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,6 +38,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ProgressDialog mAuthProgressDialog;
+    private SharedPreferences mSharedPreferences;
+    private String mEmail;
+    private SharedPreferences.Editor mEditor;
 
 
     @Override
@@ -41,6 +49,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEmail = mSharedPreferences.getString(Constants.LOGIN_EMAIL, null);
+        mEditor = mSharedPreferences.edit();
+        Log.d("Login email", mEmail);
 
         mRegisterTextView.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
@@ -80,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void loginWithPassword() {
         String email = mEmailEditText.getText().toString().trim();
+        addToSharedPreferences(email);
         String password = mPasswordEditText.getText().toString().trim();
 
         if (email.equals("")) {
@@ -128,5 +142,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             loginWithPassword();
         }
 
+    }
+
+    private void addToSharedPreferences(String email) {
+        mEditor.putString(Constants.LOGIN_EMAIL, email).apply();
     }
 }

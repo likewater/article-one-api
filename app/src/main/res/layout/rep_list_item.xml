@@ -8,8 +8,8 @@
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:id="@+id/legislatorImageView"
-        android:src="@drawable/partyicondem"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/partyiconrep"/>
 
     <LinearLayout
         android:orientation="vertical"
