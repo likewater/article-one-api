@@ -14,6 +14,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
+import com.likewater.articleone.models.RepDetail;
+import com.likewater.articleone.services.DetailService;
 import com.likewater.articleone.services.ProService;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -36,7 +38,7 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
 //    @Bind(R.id.repFirstNameTextView) TextView mFirstName;
 //    @Bind(R.id.titleTextView) TextView mTitle;
 //    @Bind(R.id.stateTextView) TextView mState;
-//    @Bind(R.id.districtTextView) TextView mDistrict;
+    @Bind(R.id.districtTextView) TextView mDistrict;
 //    @Bind(R.id.partyTextView) TextView mCurrentParty;
 //    @Bind(R.id.websiteTextView) TextView mUrl;
 //    @Bind(R.id.twitterTextView) TextView mTwitterAccount;
@@ -46,6 +48,7 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
     @Bind(R.id.saveRepButton) TextView mSaveRepButton;
 
     private Rep mRep;
+    //private RepDetail mRepDetail;
 
     public RepDetailFragment() {
         // Required empty public constructor
@@ -53,8 +56,10 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
 
     public static RepDetailFragment newInstance(Rep rep) {
         RepDetailFragment repDetailFragment = new RepDetailFragment();
+
         Bundle args = new Bundle();
         args.putParcelable("rep", Parcels.wrap(rep));
+        //args.putParcelable("repDetail", Parcels.wrap(repDetail));
         repDetailFragment.setArguments(args);
         return repDetailFragment;
 
@@ -64,8 +69,10 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mRep = Parcels.unwrap(getArguments().getParcelable("rep"));
+        //mRepDetail = Parcels.unwrap(getArguments().getParcelable("repDetail"));
 
-//        String apiUrl = mRep.getApiUri();
+       String uri = mRep.getApiUri();
+       // DetailService.findRepDetail(uri, new Callback());//look at rep list activity for an example.
 //        Log.d("api", mRep.getApiUri());
 
         //ProService.findRepDetail("https://api.propublica.org/congress/v1/members/K000388.json", new Callback(){
@@ -108,7 +115,7 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
 //        mLastName.setText(mRepDetail.getLastName());
 //        mTitle.setText(mRepDetail.getTitle());
 //        mState.setText(mRepDetail.getState());
-//        mDistrict.setText(mRepDetail.getDistrict());
+        //mDistrict.setText(mRepDetail.getDistrict());
 //        mCurrentParty.setText(mRepDetail.getCurrentParty());
 //        mUrl.setText(mRepDetail.getUrl());
 //        mTwitterAccount.setText(mRepDetail.getTwitterAccount());
