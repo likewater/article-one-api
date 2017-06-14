@@ -1,6 +1,8 @@
 package com.likewater.articleone.ui;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +39,7 @@ public class SavedRepListActivity extends AppCompatActivity {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Rep, FirebaseRepViewHolder>
                 (Rep.class, R.layout.rep_list_item, FirebaseRepViewHolder.class, mRepReference) {
 
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             protected void populateViewHolder(FirebaseRepViewHolder viewHolder, Rep model, int position) {
                 viewHolder.bindRep(model);
