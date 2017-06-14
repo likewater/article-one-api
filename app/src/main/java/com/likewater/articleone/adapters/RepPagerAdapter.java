@@ -4,10 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.ui.RepDetailFragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RepPagerAdapter extends FragmentPagerAdapter{
     private ArrayList<Rep> mRep;
@@ -31,6 +33,7 @@ public class RepPagerAdapter extends FragmentPagerAdapter{
     public CharSequence getPageTitle(int position){
         return mRep.get(position).getName();
     }
+
 
 
 }

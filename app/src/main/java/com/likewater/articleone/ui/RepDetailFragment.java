@@ -34,12 +34,12 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
     @Bind(R.id.repPartyTextView) TextView mParty;
     @Bind(R.id.repApiUrl) TextView mApiUri;
 
-//    @Bind(R.id.repLastNameTextView) TextView mLastName;
+    //    @Bind(R.id.repLastNameTextView) TextView mLastName;
 //    @Bind(R.id.repFirstNameTextView) TextView mFirstName;
 //    @Bind(R.id.titleTextView) TextView mTitle;
 //    @Bind(R.id.stateTextView) TextView mState;
     @Bind(R.id.districtTextView) TextView mDistrict;
-//    @Bind(R.id.partyTextView) TextView mCurrentParty;
+    //    @Bind(R.id.partyTextView) TextView mCurrentParty;
 //    @Bind(R.id.websiteTextView) TextView mUrl;
 //    @Bind(R.id.twitterTextView) TextView mTwitterAccount;
 //    @Bind(R.id.facebookTextView) TextView mFacebookAccount;
@@ -71,8 +71,8 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
         mRep = Parcels.unwrap(getArguments().getParcelable("rep"));
         //mRepDetail = Parcels.unwrap(getArguments().getParcelable("repDetail"));
 
-       String uri = mRep.getApiUri();
-       // DetailService.findRepDetail(uri, new Callback());//look at rep list activity for an example.
+        String uri = mRep.getApiUri();
+        // DetailService.findRepDetail(uri, new Callback());//look at rep list activity for an example.
 //        Log.d("api", mRep.getApiUri());
 
         //ProService.findRepDetail("https://api.propublica.org/congress/v1/members/K000388.json", new Callback(){

@@ -2,8 +2,11 @@ package com.likewater.articleone.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,10 +22,15 @@ import com.likewater.articleone.ui.RepDetailActivity;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
+
 
     View mView;
     Context mContext;
@@ -34,14 +42,26 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
         itemView.setOnClickListener(this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void bindRep(Rep rep) {
         TextView nameTextView = (TextView) mView.findViewById(R.id.legislatorNameTextView);
         TextView roleTextView = (TextView) mView.findViewById(R.id.roleNameTextView);
         TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
+        //@Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
 
         nameTextView.setText(rep.getName());
         roleTextView.setText(rep.getRole());
         partyTextView.setText(rep.getParty());
+
+        String party = rep.getParty();
+
+//        if (Objects.equals(party, "R")) {
+//            mLegislatorImageView.setImageResource(R.drawable.partyiconrep);
+//        } else if (Objects.equals(party, "I")) {
+//            mLegislatorImageView.setImageResource(R.drawable.partyiconind);
+//        } else {
+//            mLegislatorImageView.setImageResource(R.drawable.partyicondem);
+//        }
     }
 
     @Override

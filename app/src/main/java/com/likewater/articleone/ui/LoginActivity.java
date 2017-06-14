@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEmail = mSharedPreferences.getString(Constants.LOGIN_EMAIL, null);
         mEditor = mSharedPreferences.edit();
-        Log.d("Login email", mEmail);
+       // Log.d("Login email", mEmail);
 
         mRegisterTextView.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
