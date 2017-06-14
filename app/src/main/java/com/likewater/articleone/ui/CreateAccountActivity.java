@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,11 +19,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.likewater.articleone.R;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CreateAccountActivity extends Activity implements View.OnClickListener{
+
+public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
 
     @Bind(R.id.createUserButton) Button mCreateUserButton;
@@ -41,14 +44,17 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+
         createAuthStateListener();
+        createAuthProgressDialog();
+
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
-
-        }
+    }
 
     @Override
     public void onStart() {
@@ -81,7 +87,7 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
     }
 
     private void createNewUser() {
-        final String name = mNameEditText.getText().toString().trim();
+        mName = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
@@ -93,16 +99,36 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
 
         mAuthProgressDialog.show();
 
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                mAuthProgressDialog.dismiss();
+
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "Authentication successful");
+                    createFirebaseUserProfile(task.getResult().getUser());
+                } else {
+                    Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
+    }
+
+    private void createFirebaseUserProfile(final FirebaseUser user) {
+        UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(mName)
+                .build();
+        user.updateProfile(addProfileName)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Log.d(TAG, "Authentication successful");
-                        } else {
-                            Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, user.getDisplayName());
                         }
                     }
                 });
@@ -122,7 +148,6 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
             }
         };
     }
-
 
     private void createAuthProgressDialog() {
         mAuthProgressDialog = new ProgressDialog(this);
@@ -160,5 +185,5 @@ public class CreateAccountActivity extends Activity implements View.OnClickListe
         return true;
     }
 
-
 }
+
