@@ -30,8 +30,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-//  private SharedPreferences mSharedPreferences;
-//  private SharedPreferences.Editor mEditor;
+  private SharedPreferences mSharedPreferences;
+  private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedStateReference;
     private ValueEventListener mSearchedStateReferenceListener;
 
@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-//      mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//      mEditor = mSharedPreferences.edit();
+      mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+      mEditor = mSharedPreferences.edit();
 
         Typeface openSans = Typeface.createFromAsset(getAssets(),
                 "fonts/opensans-regular.ttf");
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == mFindRepsButton) {
             String congress = mSpinnerHouse.getSelectedItem().toString();
             String state = mSpinnerState.getSelectedItem().toString();
-            //addToSharedPreferences(congress, state);
+            addToSharedPreferences(congress, state);
 
             //saveLocationToFirebase(state);
 
@@ -161,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mSearchedStateReference.removeEventListener(mSearchedStateReferenceListener);
 //    }
 
-//    private void addToSharedPreferences(String congress, String state) {
-//        mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();
-//        mEditor.putString(Constants.PREFERENCES_STATE_KEY, state).apply();
-//    }
+    private void addToSharedPreferences(String congress, String state) {
+        mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();
+        mEditor.putString(Constants.PREFERENCES_STATE_KEY, state).apply();
+    }
 }
