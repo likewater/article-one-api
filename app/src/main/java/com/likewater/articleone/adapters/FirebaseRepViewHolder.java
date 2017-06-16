@@ -28,13 +28,15 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
-    @Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
+    //private static final int MAX_WIDTH = 200;
+    //private static final int MAX_HEIGHT = 200;
+    //@Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
+
 
 
     View mView;
     Context mContext;
+    public ImageView mLegislatorImageView;
 
     public FirebaseRepViewHolder(View itemView) {
         super(itemView);
@@ -48,7 +50,7 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
         TextView nameTextView = (TextView) mView.findViewById(R.id.legislatorNameTextView);
         TextView roleTextView = (TextView) mView.findViewById(R.id.roleNameTextView);
         TextView partyTextView = (TextView) mView.findViewById(R.id.partyTextView);
-        ImageView legislatorImageView = (ImageView) mView.findViewById(R.id.legislatorImageView);
+        mLegislatorImageView = (ImageView) mView.findViewById(R.id.legislatorImageView);
 
         nameTextView.setText(rep.getName());
         roleTextView.setText(rep.getRole());
@@ -57,11 +59,11 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
         String party = rep.getParty();
 
         if (Objects.equals(party, "R")) {
-            legislatorImageView.setImageResource(R.drawable.partyiconrep);
+            mLegislatorImageView.setImageResource(R.drawable.partyiconrep);
         } else if (Objects.equals(party, "I")) {
-            legislatorImageView.setImageResource(R.drawable.partyiconind);
+            mLegislatorImageView.setImageResource(R.drawable.partyiconind);
         } else {
-            legislatorImageView.setImageResource(R.drawable.partyicondem);
+            mLegislatorImageView.setImageResource(R.drawable.partyicondem);
         }
     }
 
