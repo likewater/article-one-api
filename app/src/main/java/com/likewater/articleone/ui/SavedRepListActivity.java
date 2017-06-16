@@ -37,7 +37,7 @@ public class SavedRepListActivity extends AppCompatActivity {
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Rep, FirebaseRepViewHolder>
-                (Rep.class, R.layout.rep_list_item, FirebaseRepViewHolder.class, mRepReference) {
+                (Rep.class, R.layout.rep_list_item_drag, FirebaseRepViewHolder.class, mRepReference) {
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
