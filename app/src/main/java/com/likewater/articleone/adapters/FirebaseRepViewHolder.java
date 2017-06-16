@@ -27,7 +27,7 @@ import java.util.Objects;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseRepViewHolder extends RecyclerView.ViewHolder {
     //private static final int MAX_WIDTH = 200;
     //private static final int MAX_HEIGHT = 200;
     //@Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
@@ -42,7 +42,7 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
+        //itemView.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -67,31 +67,31 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements Vi
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        final ArrayList<Rep> reps = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPS);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    reps.add(snapshot.getValue(Rep.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, RepDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("reps", Parcels.wrap(reps));
-
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
+//    @Override
+//    public void onClick(View view) {
+//        final ArrayList<Rep> reps = new ArrayList<>();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_REPS);
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    reps.add(snapshot.getValue(Rep.class));
+//                }
+//
+//                int itemPosition = getLayoutPosition();
+//
+//                Intent intent = new Intent(mContext, RepDetailActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("reps", Parcels.wrap(reps));
+//
+//                mContext.startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//    }
 
 }

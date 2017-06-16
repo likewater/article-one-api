@@ -11,6 +11,7 @@ public class Rep {
     private String role;
     private String party;
     private String apiUri;
+    String index;
 
     public Rep() {}
 
@@ -19,6 +20,7 @@ public class Rep {
         this.role = role;
         this.party = party;
         this.apiUri = apiUri;
+        this.index = "not_specified";
     }
 
     public String getName(){
@@ -35,6 +37,12 @@ public class Rep {
 
     public String getApiUri(){
         return apiUri;
+    }
+
+    public String getIndex() {return index; }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 
 }

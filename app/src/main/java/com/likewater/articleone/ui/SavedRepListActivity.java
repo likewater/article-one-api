@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.likewater.articleone.adapters.FirebaseRepListAdapter;
@@ -49,16 +50,18 @@ public class SavedRepListActivity extends AppCompatActivity implements OnStartDr
         assert user != null;
         String uid = user.getUid();
 
-        mRepReference = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_REPS);
-                //.child(uid);
+//        mRepReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_REPS);
 
-//        mFirebaseAdapter = new FirebaseRepListAdapter(Rep.class, R.layout.rep_list_item_drag,
-//                FirebaseRepViewHolder.class, mRepReference, this, this)
+        Query query = FirebaseDatabase.getInstance()
+                .getReference(Constants.FIREBASE_CHILD_REPS)
+                //.child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
+
 
         mFirebaseAdapter = new FirebaseRepListAdapter
-               (Rep.class, R.layout.rep_list_item_drag, FirebaseRepViewHolder.class, mRepReference, this, this);
+               (Rep.class, R.layout.rep_list_item_drag, FirebaseRepViewHolder.class, query, this, this);
         //mRecyclerView.setAdapter(mFirebaseAdapter);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new

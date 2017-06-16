@@ -14,4 +14,5 @@ public class Constants {
     public static final String FIREBASE_CHILD_SEARCHED_STATE = "searchedState";
     public static final String FIREBASE_CHILD_REPS = "reps";
     public static final String LOGIN_EMAIL = "EMAIL";
+    public static final String FIREBASE_QUERY_INDEX = "index";
 }
