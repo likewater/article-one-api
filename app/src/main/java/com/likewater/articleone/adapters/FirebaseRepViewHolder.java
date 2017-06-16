@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.likewater.articleone.Constants;
 import com.likewater.articleone.R;
 import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.ui.RepDetailActivity;
+import com.likewater.articleone.util.ItemTouchHelperViewHolder;
 
 import org.parceler.Parcels;
 
@@ -27,7 +29,7 @@ import java.util.Objects;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FirebaseRepViewHolder extends RecyclerView.ViewHolder {
+public class FirebaseRepViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     //private static final int MAX_WIDTH = 200;
     //private static final int MAX_HEIGHT = 200;
     //@Bind(R.id.legislatorImageView) ImageView mLegislatorImageView;
@@ -65,6 +67,29 @@ public class FirebaseRepViewHolder extends RecyclerView.ViewHolder {
         } else {
             mLegislatorImageView.setImageResource(R.drawable.partyicondem);
         }
+
+
+    }
+
+    @Override
+    public void onItemSelected() {
+        Log.d("Animation", "onItemSelected");
+        // we will add animations here
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
+
+    @Override
+    public void onItemClear() {
+        Log.d("Animation", "onItemClear");
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
+        // we will add animations here
     }
 
 //    @Override
