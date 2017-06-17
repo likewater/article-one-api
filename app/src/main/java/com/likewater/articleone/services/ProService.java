@@ -20,7 +20,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ProService {
-    //Create url and make an API request
+
     public static void findReps(String congress, String state, Callback callback){
 
         OkHttpClient client = new OkHttpClient.Builder()

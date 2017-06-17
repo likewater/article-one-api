@@ -2,8 +2,6 @@ package com.likewater.articleone.models;
 
 import org.parceler.Parcel;
 
-import java.util.ArrayList;
-
 @Parcel
 public class Rep {
 

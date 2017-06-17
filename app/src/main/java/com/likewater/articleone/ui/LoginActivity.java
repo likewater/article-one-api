@@ -22,8 +22,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -53,7 +51,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEmail = mSharedPreferences.getString(Constants.LOGIN_EMAIL, null);
         mEditor = mSharedPreferences.edit();
-       // Log.d("Login email", mEmail);
 
         mRegisterTextView.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
@@ -62,7 +59,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         createAuthProgressDialog();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -141,7 +137,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (view == mPasswordLoginButton) {
             loginWithPassword();
         }
-
     }
 
     private void addToSharedPreferences(String email) {

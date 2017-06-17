@@ -1,7 +1,5 @@
 package com.likewater.articleone.ui;
 
-/* RepListActivity creates an arraylist of reps and feeds Recycler view */
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -13,7 +11,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,7 +19,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -59,7 +55,6 @@ public class RepListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String congress = intent.getStringExtra("congress");
         String state = intent.getStringExtra("state");
-//      mLocationTextView.setText("Here Are Your " + state + " Reps");
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentCongress = mSharedPreferences.getString(Constants.PREFERENCES_CONGRESS_KEY, null);
@@ -87,23 +82,9 @@ public class RepListActivity extends AppCompatActivity {
            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
            @Override
             public boolean onQueryTextSubmit(String query) {
-
                addToSharedPreferences(query);
                getReps(mRecentCongress, query);
                return false;
-
-//               if(Objects.equals(query, mRecentCongress)) {
-//                   addToSharedPreferences(query, mRecentState);
-//                   getReps(query, mRecentState);
-//                   Log.d("congress", mRecentCongress);
-//                   //addToSharedPreferences(query, mRecentState);
-//               }
-//               else if (Objects.equals(query, mRecentState)) {
-//                   addToSharedPreferences(mRecentCongress, query);
-//                   getReps(mRecentCongress, query);
-//                   //addToSharedPreferences(mRecentCongress, query);
-//               }
-               //return false;
             }
 
             @Override
@@ -157,11 +138,9 @@ public class RepListActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 
     private void addToSharedPreferences(String state) {
-        //mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();
         mEditor.putString(Constants.PREFERENCES_STATE_KEY, state).apply();
     }
 }

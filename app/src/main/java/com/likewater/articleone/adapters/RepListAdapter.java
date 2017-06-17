@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,12 +39,10 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
         return viewHolder;
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onBindViewHolder(RepListAdapter.RepViewHolder holder, int position) {
         holder.bindRep(mReps.get(position));
-
     }
 
     @Override
@@ -94,5 +91,4 @@ public class RepListAdapter extends RecyclerView.Adapter<RepListAdapter.RepViewH
             }
         }
     }
-
 }

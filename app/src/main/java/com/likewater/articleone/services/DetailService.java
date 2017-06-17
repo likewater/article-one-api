@@ -1,13 +1,9 @@
 package com.likewater.articleone.services;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.likewater.articleone.Constants;
-import com.likewater.articleone.models.Rep;
 import com.likewater.articleone.models.RepDetail;
 
 import java.io.IOException;
@@ -21,7 +17,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class DetailService {
-    //Create url and make an API request
+
     public static void findRepDetail(String member, Callback callback){
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -35,8 +31,6 @@ public class DetailService {
                 .url(url)
                 .header(Constants.HEADER, Constants.PRO_PUBLICA_KEY)
                 .build();
-        Log.d(url, url);
-        Log.d(Constants.HEADER, Constants.HEADER );
 
         Call call = client.newCall(request);
         call.enqueue(callback);
@@ -64,7 +58,7 @@ public class DetailService {
                     String facebookAccount = repJSON.getString("facebookAccount");
                     String youtubeAccount = repJSON.getString("youtubeAccount");
                     String phone = repJSON.getString("phone");
-                    //String apiUri = repJSON.getString("api_uri");
+                    String apiUri = repJSON.getString("api_uri");
 
                     RepDetail repDetail = new RepDetail("115", lastName, firstName, title, state,
                             district, currentParty, url, twitterAccount, facebookAccount,

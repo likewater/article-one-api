@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,15 +27,14 @@ import com.likewater.articleone.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-  private SharedPreferences mSharedPreferences;
-  private SharedPreferences.Editor mEditor;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedStateReference;
     private ValueEventListener mSearchedStateReferenceListener;
 
     @Bind(R.id.findRepsButton) Button mFindRepsButton;
-//  @Bind(R.id.locationEditText) EditText mLocationEditText;
     @Bind(R.id.articleOneTextView) TextView mArticleOneTextView;
     @Bind(R.id.articleOneTextView2) TextView mArticleOneTextView2;
     @Bind(R.id.findAboutPageButton) Button mFindAboutPageButton;
@@ -52,13 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCHED_STATE);
 
-        mSearchedStateReferenceListener = mSearchedStateReference.addValueEventListener(new ValueEventListener() { //attach listener
+        mSearchedStateReferenceListener = mSearchedStateReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
                     String state = locationSnapshot.getValue().toString();
-                    Log.d("States updated", "state: " + state); //log
                 }
             }
 
@@ -94,18 +91,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 R.array.states_array, android.R.layout.simple_spinner_item);
         adapterTwo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerState.setAdapter(adapterTwo);
-
     }
 
     @Override
-    public void onClick(View v){
+    public void onClick(View v) {
         if(v == mFindRepsButton) {
             String congress = mSpinnerHouse.getSelectedItem().toString();
             String state = mSpinnerState.getSelectedItem().toString();
             addToSharedPreferences(congress, state);
-
-            //saveLocationToFirebase(state);
-
             Intent intent = new Intent(MainActivity.this, RepListActivity.class);
             intent.putExtra("congress", congress);
             intent.putExtra("state", state);
@@ -117,13 +110,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
 
-
         if(v == mFindAboutPageButton){
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         }
-
-
     }
 
     @Override
@@ -150,16 +140,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
         finish();
     }
-
-//    public void saveLocationToFirebase(String state) {
-//        mSearchedStateReference.push().setValue(state);
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mSearchedStateReference.removeEventListener(mSearchedStateReferenceListener);
-//    }
 
     private void addToSharedPreferences(String congress, String state) {
         mEditor.putString(Constants.PREFERENCES_CONGRESS_KEY, congress).apply();

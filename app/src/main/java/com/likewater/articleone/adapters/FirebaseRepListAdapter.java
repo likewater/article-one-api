@@ -67,7 +67,6 @@ public class FirebaseRepListAdapter extends FirebaseRecyclerAdapter<Rep, Firebas
 
             }
         });
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -93,9 +92,6 @@ public class FirebaseRepListAdapter extends FirebaseRecyclerAdapter<Rep, Firebas
                 mContext.startActivity(intent);
             }
         });
-
-
-
     }
 
     @Override
