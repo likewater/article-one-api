@@ -20,7 +20,7 @@ Things that need to be addressed and polished are below:
 * Basic user testing.
 * How to make a second API call in conjunction with the first.
 * To make the second call refactoring into one class model needs to occur.
-* The app needs to be a communication bridge that can link users with reps - social media via implicit intents would be part od phase two and dependent on that second api call.
+* The app needs to be a communication bridge that can link users with reps - social media via implicit intents would be part of phase two and dependent on that second api call.
 
 ### This project is licensed under the MIT License - [license]
 
