@@ -107,19 +107,19 @@ public class FirebaseRepListAdapter extends FirebaseRecyclerAdapter<Rep, Firebas
         getRef(position).removeValue();
     }
 
-    private void setIndexInFirebase() {
-        for (Rep rep : mReps) {
-            int index = mReps.indexOf(rep);
-            DatabaseReference ref = getRef(index);
-            rep.setIndex(Integer.toString(index));
-            ref.setValue(rep);
-        }
-    }
+//    private void setIndexInFirebase() {
+//        for (Rep rep : mReps) {
+//            int index = mReps.indexOf(rep);
+//            DatabaseReference ref = getRef(index);
+//            rep.setIndex(Integer.toString(index));
+//            ref.setValue(rep);
+//        }
+//    }
 
     @Override
     public void cleanup() {
         super.cleanup();
-        setIndexInFirebase();
+        //setIndexInFirebase();
         mRef.removeEventListener(mChildEventListener);
     }
 }

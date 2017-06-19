@@ -37,6 +37,14 @@ public class SavedRepListActivity extends AppCompatActivity implements OnStartDr
         setContentView(R.layout.activity_rep_list);
         ButterKnife.bind(this);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mRepReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_REPS)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 

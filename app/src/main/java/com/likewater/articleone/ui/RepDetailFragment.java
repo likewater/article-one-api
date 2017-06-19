@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.likewater.articleone.Constants;
@@ -68,11 +70,21 @@ public class RepDetailFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
         if (v == mSaveRepButton) {
-            DatabaseReference restaurantRef = FirebaseDatabase
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
+            DatabaseReference repRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_REPS);
-            restaurantRef.push().setValue(mRep);
-            Log.d("api", mRep.getApiUri());
+                    .getReference(Constants.FIREBASE_CHILD_REPS)
+                    .child(uid);
+
+            DatabaseReference pushRef = repRef.push();
+            String pushId = pushRef.getKey();
+            mRep.setPushId(pushId);
+            pushRef.setValue(mRep);
+
+            //repRef.push().setValue(mRep);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

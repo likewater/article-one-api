@@ -9,7 +9,8 @@ public class Rep {
     private String role;
     private String party;
     private String apiUri;
-    String index;
+    //String index;
+    private String pushId;
 
     public Rep() {}
 
@@ -18,7 +19,7 @@ public class Rep {
         this.role = role;
         this.party = party;
         this.apiUri = apiUri;
-        this.index = "not_specified";
+        //this.index = "not_specified";
     }
 
     public String getName(){
@@ -37,10 +38,18 @@ public class Rep {
         return apiUri;
     }
 
-    public String getIndex() {return index; }
+    //public String getIndex() {return index; }
 
-    public void setIndex(String index) {
-        this.index = index;
+//    public void setIndex(String index) {
+//        this.index = index;
+//    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }
