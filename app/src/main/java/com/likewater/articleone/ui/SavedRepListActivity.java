@@ -44,6 +44,7 @@ public class SavedRepListActivity extends AppCompatActivity implements OnStartDr
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_REPS)
                 .child(uid);
+        Log.d("47", uid);
 
         setUpFirebaseAdapter();
     }
