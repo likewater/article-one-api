@@ -5,12 +5,13 @@ import org.parceler.Parcel;
 @Parcel
 public class Rep {
 
-    private String name;
-    private String role;
-    private String party;
-    private String apiUri;
-    //String index;
+    String name;
+    String role;
+    String party;
+    String apiUri;
+    String index;
     private String pushId;
+//    String child;
 
     public Rep() {}
 
@@ -19,7 +20,7 @@ public class Rep {
         this.role = role;
         this.party = party;
         this.apiUri = apiUri;
-        //this.index = "not_specified";
+        this.index = "not_specified";
     }
 
     public String getName(){
@@ -38,11 +39,11 @@ public class Rep {
         return apiUri;
     }
 
-    //public String getIndex() {return index; }
+    public String getIndex() {return index; }
 
-//    public void setIndex(String index) {
-//        this.index = index;
-//    }
+    public void setIndex(String index) {
+        this.index = index;
+    }
 
     public String getPushId() {
         return pushId;
@@ -51,5 +52,9 @@ public class Rep {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
+    
+//    public void setChild(String child) {
+//        this.child = child;
+//    }
 
 }

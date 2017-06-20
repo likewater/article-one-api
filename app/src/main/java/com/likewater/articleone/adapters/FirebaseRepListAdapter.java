@@ -31,6 +31,7 @@ public class FirebaseRepListAdapter extends FirebaseRecyclerAdapter<Rep, Firebas
     private Context mContext;
     private ChildEventListener mChildEventListener;
     private ArrayList<Rep> mReps = new ArrayList<>();
+    private FirebaseRepViewHolder mViewHolder;
 
     public FirebaseRepListAdapter(Class<Rep> modelClass, int modelLayout,
                                          Class<FirebaseRepViewHolder> viewHolderClass,
@@ -86,6 +87,7 @@ public class FirebaseRepListAdapter extends FirebaseRecyclerAdapter<Rep, Firebas
 
             @Override
             public void onClick(View v) {
+//                mViewHolder = viewHolder;
                 Intent intent = new Intent(mContext, RepDetailActivity.class);
                 intent.putExtra("position", viewHolder.getAdapterPosition());
                 intent.putExtra("reps", Parcels.wrap(mReps));
@@ -107,19 +109,22 @@ public class FirebaseRepListAdapter extends FirebaseRecyclerAdapter<Rep, Firebas
         getRef(position).removeValue();
     }
 
-//    private void setIndexInFirebase() {
-//        for (Rep rep : mReps) {
-//            int index = mReps.indexOf(rep);
-//            DatabaseReference ref = getRef(index);
-//            rep.setIndex(Integer.toString(index));
-//            ref.setValue(rep);
-//        }
-//    }
-
     @Override
     public void cleanup() {
         super.cleanup();
-        //setIndexInFirebase();
+        setIndexInFirebase();
         mRef.removeEventListener(mChildEventListener);
     }
+
+    private void setIndexInFirebase() {
+        for (Rep rep : mReps) {
+            int index = mReps.indexOf(rep);
+            DatabaseReference ref = getRef(index);
+//            ref.child("index").setValue(Integer.toString(index));
+            rep.setIndex(Integer.toString(index));
+            ref.setValue(rep);
+        }
+    }
+
+
 }
